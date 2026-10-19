@@ -1,0 +1,50 @@
+Q|Quelle est la capitale de la Belgique ?
+A|Bruxelles|V
+A|Paris|X
+A|Londres|X
+
+Q|Quel langage de programmation est utilisé dans ce cours ?
+A|Python|V
+A|Java|X
+A|C++|X
+
+Q|Quel est le résultat de 3 + 5 ?
+A|8|V
+A|7|X
+A|9|X
+
+Q|Quelle est la fonction utilisée pour trier une liste en Python ?
+A|sorted()|V
+A|list.sort()|X
+A|order()|X
+
+Q|Quel est le type de données d'une liste en Python ?
+A|list|V
+A|array|X
+A|tuple|X
+
+Q|Quelle est la valeur de 2 ** 3 ?
+A|8|V
+A|6|X
+A|9|X
+
+Q|Quelle méthode permet de trouver l'index d'un élément dans une liste ?
+A|index()|V
+A|find()|X
+A|search()|X
+
+Q|Quel est le résultat de 10 // 3 en Python ?
+A|3|V
+A|3.333|X
+A|4|X
+
+Q|Quelle est la fonction pour lire une entrée utilisateur en Python ?
+A|input()|V
+A|read()|X
+A|scan()|X
+
+Q|Quel est le symbole pour commenter une ligne en Python ?
+A|#|V
+A|//|X
+A|/* */|X
+
