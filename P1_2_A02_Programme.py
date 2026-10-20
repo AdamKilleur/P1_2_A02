@@ -2,7 +2,7 @@ import qcm
 import random
 
 if __name__ == '__main__':
-    filename = "QCM.txt"
+    filename = input("Veuillez insérer le nom complet de votre fichier avec le format (Exemple : .txt) \n ")
 
     # --------------------------------------------- Variable
 
@@ -10,20 +10,35 @@ if __name__ == '__main__':
 
     random.shuffle(questions)  # mélange aléatoirement les questions
 
-    liste_rep = []
-
     score_comparatif = 0
     
     score_evaluatif = 0
 
     # --------------------------------------------- Code
 
-    print("Choississez votre mode de réponse:\n \t 1 pour le mode évaluatif \n \t 2 pour le mode comparatif")
-    utilisateur = int(input("choisissez votre mode : "))
+    pseudo = ""
+    while pseudo == "":
+        pseudo = input("Veuillez entrer ci-dessous votre pseudo : ")
+
+    print("Bonjour " + pseudo + ", bienvenue dans le questionnaire QCM !\n"
+    "Vous allez devoir répondre à une série de questions à choix multiples.\n"
+    "Pour chaque question, entrez la réponse complète que vous croyez correcte.\n"
+    "Bonne chance ! \n ")
+
+    print("Avant de commencer le QCM, veuillez choisir votre mode de cotation:\n \t "
+            "1 pour le mode évaluatif \n \t " 
+            "2 pour le mode comparatif \n ")
+
+
+    utilisateur = (input("Choisissez votre mode : "))
+    assert utilisateur == int, "Veuillez entrer un chiffre entier entre 1 et 2"
+    utilisateur = int(utilisateur)
+    assert utilisateur != 1 or 2, "Veuillez entrer un chiffre entier entre 1 et 2"
 
 
 # = Imprime la question avec ses propositions
     for q in range(len(questions)):
+        liste_rep = []
         print(questions[q][0])
         choices = questions[q][1]
         random.shuffle(choices)
@@ -47,17 +62,16 @@ if __name__ == '__main__':
             if utilisateur == 2:
                 score_comparatif -= 1
 
-# ===== Regarde s'il y a un feedback et le print si et uniquement s'il est présent
+# ===== Imprime un feedback s'il est présent
         for i in range(len(choices)):
             if reponse == choices[i][0]:
                 feedback = choices[i][2]
                 if feedback != '':
-                    print('Feedback :' + choices[i][2])
+                    print('Feedback : ' + choices[i][2])
 
 # = Imprime le score en fonction du mode de cotation
     if utilisateur == 2:
-        print("Votre score avec les malus est de : " + str(
-            score_comparatif) + "\nVotre score sans les malus est de : " + str(score_evaluatif))
+        print("Votre score avec les malus est de : " + str(score_comparatif) + "\nVotre score sans les malus est de : " + str(score_evaluatif))
     
     elif utilisateur == 1:
         print("Votre score est de : " + str(score_evaluatif))
