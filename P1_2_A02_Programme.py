@@ -1,9 +1,12 @@
 import qcm
 import random
+import os 
 
 if __name__ == '__main__':
-    filename = input("Veuillez insérer le nom complet de votre fichier avec le format (Exemple : .txt) \n ")
-
+    inputphrasefilename = "Veuillez insérer le nom complet de votre fichier avec le format (Exemple : .txt) \n "
+    filename = input(inputphrasefilename)
+    while not os.path.exists(filename):
+        filename = input(inputphrasefilename + " Le nom du fichier que vous avez inscrit n'éxiste pas.\n")
     # --------------------------------------------- Variable
 
     questions = qcm.build_questionnaire(filename)  # chargement du questionnaire
@@ -31,9 +34,10 @@ if __name__ == '__main__':
 
 
     utilisateur = (input("Choisissez votre mode : "))
-    assert utilisateur == int, "Veuillez entrer un chiffre entier entre 1 et 2"
+#    assert utilisateur == int, "Veuillez entrer un chiffre entier entre 1 et 2"
+    
     utilisateur = int(utilisateur)
-    assert utilisateur != 1 or 2, "Veuillez entrer un chiffre entier entre 1 et 2"
+#    assert utilisateur != 1 and 2, "Veuillez entrer un chiffre entier entre 1 et 2"
 
 
 # = Imprime la question avec ses propositions
@@ -47,12 +51,18 @@ if __name__ == '__main__':
 
 # ========= Création d'une liste contenant les bonnes réponses
             if choices[r][1] == True:
-                liste_rep.append(questions[q][1][r][0])
+                liste_rep.append(r)
 
-        reponse = input("Entrez la bonne réponse : ")
+        reponse = input("Entrez le numéro de la bonne réponse : ")
+        while reponse.isdigit() == False:
+            if reponse.isdigit() == True:
+                reponse = int(reponse)
+            else:
+                reponse = input("Entrez le numéro de la bonne réponse : ")
+        reponse = int(reponse)
 
 # ===== Met à jour le score en fonction du mode de cotation
-        if reponse in liste_rep:
+        if reponse-1 in liste_rep:
             print('Bonne réponse !')
             score_comparatif += 1
             score_evaluatif += 1
@@ -64,10 +74,14 @@ if __name__ == '__main__':
 
 # ===== Imprime un feedback s'il est présent
         for i in range(len(choices)):
-            if reponse == choices[i][0]:
-                feedback = choices[i][2]
+            if choices[r-1][0] == choices[i][0]:
+                feedback = choices[r-1][2]
+                #print("feedback avant if")
                 if feedback != '':
-                    print('Feedback : ' + choices[i][2])
+                    print('Feedback : ' + choices[r-1][2] + "\n")
+                #print("feedback après if")
+                #print("feedack:", feedback)
+
 
 # = Imprime le score en fonction du mode de cotation
     if utilisateur == 2:
