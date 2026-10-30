@@ -8,7 +8,7 @@ if __name__ == '__main__':
     # ========================================= Le programme vérifie qu'il existe avant de continuer.
 
     inputphrasefilename = "Veuillez insérer le nom complet de votre fichier avec le format (Exemple : .txt) \n "
-    filename = input(inputphrasefilename) or "qcm.txt"
+    filename = input(inputphrasefilename) or "QCM.txt"
     while not os.path.exists(filename):
         filename = input(inputphrasefilename + " Le nom du fichier que vous avez inscrit n'éxiste pas.\n")
 
